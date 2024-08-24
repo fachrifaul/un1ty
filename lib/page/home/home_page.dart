@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/logger/loggy_types.dart';
 import '../../routes/route.dart';
+import '../../util/loggy_types.dart';
 import '../detail/detail_bindings.dart';
 
 class HomePage extends StatefulWidget {

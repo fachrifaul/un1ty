@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import '../../core/common/async_value.dart';
-import '../../core/logger/loggy_types.dart';
 import '../../network/response/get_response.dart';
 import '../../network/service/http_bin_service.dart';
+import '../../util/async_value.dart';
+import '../../util/loggy_types.dart';
 import 'detail_bindings.dart';
 
 class DetailController extends GetxController with ControllerLoggy {

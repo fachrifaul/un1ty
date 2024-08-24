@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../core/common/result.dart';
+import '../../util/result.dart';
 import '../api.dart';
 import '../response/get_response.dart';
 

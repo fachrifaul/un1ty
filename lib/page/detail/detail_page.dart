@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/common/async_value.dart';
-import '../../core/logger/loggy_types.dart';
 import '../../network/service/auth_service.dart';
+import '../../util/async_value.dart';
+import '../../util/loggy_types.dart';
 import 'detail_controller.dart';
 
 class DetailPage extends GetWidget<DetailController> with UiLoggy {
