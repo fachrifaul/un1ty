@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 
 import '../../network/service/auth_service.dart';
 import '../../routes/route.dart';
+import '../../util/loggy_types.dart';
+import 'login_controller.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetWidget<LoginController> with UiLoggy {
   const LoginPage({super.key});
 
   @override
@@ -21,10 +23,6 @@ class LoginPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () => _onTapLogin(context),
               child: const Text('Login'),
-            ),
-            ElevatedButton(
-              onPressed: () => Get.toNamed(AppRoute.home.name),
-              child: const Text('Go to Home'),
             ),
           ],
         ),
