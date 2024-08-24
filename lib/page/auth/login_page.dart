@@ -1,31 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
-import '../../core/navigation/route.dart';
-import 'authentication_bloc.dart';
-import 'login_bloc.dart';
+import '../../core/network/service/auth_service.dart';
+import '../../routes/route.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc(),
-      child: const LoginView(),
-    );
-  }
-}
-
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
-
-  @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +23,7 @@ class _LoginViewState extends State<LoginView> {
               child: const Text('Login'),
             ),
             ElevatedButton(
-              onPressed: () => context.pushNamed(
-                AppRoute.home.name,
-              ),
+              onPressed: () => Get.toNamed(AppRoute.home.name),
               child: const Text('Go to Home'),
             ),
           ],
@@ -54,6 +33,7 @@ class _LoginViewState extends State<LoginView> {
   }
 
   void _onTapLogin(BuildContext context) {
-    context.read<AuthhenticationBloc>().login('mymymy');
+    AuthService.to.login();
+    Get.offNamed(AppRoute.home.name);
   }
 }

@@ -10,9 +10,10 @@ mixin UiLoggy implements LoggyType {
   Loggy<UiLoggy> get loggy => Loggy<UiLoggy>('UI: $runtimeType');
 }
 
-mixin BlocLoggy implements LoggyType {
+mixin ControllerLoggy implements LoggyType {
   @override
-  Loggy<BlocLoggy> get loggy => Loggy<BlocLoggy>('BLOC: $runtimeType');
+  Loggy<ControllerLoggy> get loggy =>
+      Loggy<ControllerLoggy>('GetxController: $runtimeType');
 }
 
 mixin RepositoryLoggy implements LoggyType {
@@ -21,8 +22,8 @@ mixin RepositoryLoggy implements LoggyType {
       Loggy<RepositoryLoggy>('REPOSITORY: $runtimeType');
 }
 
-mixin ProviderLoggy implements LoggyType {
+mixin MiddlewareLoggy implements LoggyType {
   @override
-  Loggy<ProviderLoggy> get loggy =>
-      Loggy<ProviderLoggy>('PROVIDER: $runtimeType');
+  Loggy<MiddlewareLoggy> get loggy =>
+      Loggy<MiddlewareLoggy>('GetMiddleware: $runtimeType');
 }

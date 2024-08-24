@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
-import 'navigation/router.dart';
-import 'page/auth/authentication_bloc.dart';
+import 'core/network/service/auth_service.dart';
+import 'routes/router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,10 +11,7 @@ void main() {
   _initLoggy();
 
   runApp(
-    BlocProvider(
-      create: (context) => AuthhenticationBloc(),
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -35,19 +32,19 @@ class MyApp extends StatelessWidget with UiLoggy {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthhenticationBloc, AuthenticationState>(
-      listener: (context, state) {
-        appRouter.refresh();
-      },
-      child: MaterialApp.router(
-        routerConfig: appRouter,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        debugShowCheckedModeBanner: false,
+    return GetMaterialApp(
+      initialBinding: BindingsBuilder(
+        () {
+          Get.put(AuthService());
+        },
       ),
+      getPages: AppPages.routes,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

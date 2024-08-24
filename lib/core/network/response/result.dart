@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'result.freezed.dart';
 
-/// TODO: no needed
+/// TODO (fachri): no needed remove later
 /// The outcome of a operation.
 ///
 /// An outcome can be either a success and return a [T] result

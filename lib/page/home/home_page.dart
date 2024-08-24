@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
-import '../../core/navigation/route.dart';
-import '../detail/detail_page.dart';
-import 'home_bloc.dart';
+import '../../routes/route.dart';
+import '../detail/detail_bindings.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(),
-      child: const HomeView(),
-    );
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
-
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
+class _HomePageState extends State<HomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -58,9 +44,9 @@ class _HomeViewState extends State<HomeView> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             ElevatedButton(
-              onPressed: () => context.pushNamed(
+              onPressed: () => Get.toNamed(
                 AppRoute.detail.name,
-                extra: const DetailViewParams(
+                arguments: const DetailViewParams(
                   id: 123,
                 ),
               ),

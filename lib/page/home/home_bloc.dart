@@ -1,9 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../../core/logger/loggy_types.dart';
 
-class HomeState {}
-
-class HomeBloc extends Cubit<HomeState> with BlocLoggy {
-  HomeBloc() : super(HomeState());
-}
+class HomeController extends GetxController with ControllerLoggy {}

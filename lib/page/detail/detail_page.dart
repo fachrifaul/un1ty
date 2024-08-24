@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 import '../../core/common/async_value.dart';
 import '../../core/logger/loggy_types.dart';
-import 'detail_bloc.dart';
+import '../../core/network/service/auth_service.dart';
+import 'detail_bindings.dart';
+import 'detail_controller.dart';
 
-class DetailViewParams {
-  final int id;
-
-  const DetailViewParams({
-    required this.id,
-  });
-}
-
-class DetailPage extends StatelessWidget {
+class DetailPage extends GetWidget<DetailController> with UiLoggy {
   final DetailViewParams params;
 
   const DetailPage({
@@ -24,54 +17,36 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DetailBloc(),
-      child: DetailView(
-        params: params,
-      ),
-    );
-  }
-}
-
-class DetailView extends StatefulWidget {
-  final DetailViewParams params;
-
-  const DetailView({
-    super.key,
-    required this.params,
-  });
-
-  @override
-  State<DetailView> createState() => _DetailViewState();
-}
-
-class _DetailViewState extends State<DetailView> with UiLoggy {
-  @override
-  Widget build(BuildContext context) {
     loggy.info('lalal');
-    return BlocBuilder<DetailBloc, DetailState>(
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Detail ${widget.params.id}'),
-            leading: IconButton(
-              onPressed: () => context.pop(),
-              icon: const Icon(
-                Icons.arrow_back,
-              ),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detail ${params.id}'),
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(
+            Icons.arrow_back,
           ),
-          body: SafeArea(
-            child: state.response.when(
-              data: (value) {
-                return Text('data ${state.response.asData?.value.toJson()}');
-              },
-              loading: () => const Text('loading'),
-              error: (error, stackTrace) => const Text('error'),
-            ),
+        ),
+      ),
+      body: SafeArea(
+        child: Obx(
+          () => controller.response.value.when(
+            data: (value) {
+              return Column(
+                children: [
+                  Text('data ${value.toJson()}'),
+                  ElevatedButton(
+                    onPressed: () => AuthService.to.logout(),
+                    child: const Text('Logout'),
+                  ),
+                ],
+              );
+            },
+            loading: () => const Text('loading'),
+            error: (error, stackTrace) => const Text('error'),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
