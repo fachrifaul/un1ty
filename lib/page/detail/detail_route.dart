@@ -24,10 +24,10 @@ class DetailInput {
 
   factory DetailInput.fromMap(Map<String, String?> parameters) {
     return DetailInput(
-      id: parameters.optInt('id'),
-      flag: parameters.optBool('flag'),
-      country: parameters.optString('country'),
-      weight: parameters.optDouble('weight'),
+      id: parameters.optInt(idKey),
+      flag: parameters.optBool(flagKey),
+      country: parameters.optString(countryKey),
+      weight: parameters.optDouble(weightKey),
     );
   }
 
