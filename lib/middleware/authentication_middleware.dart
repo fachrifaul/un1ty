@@ -8,8 +8,6 @@ import '../routes/route.dart';
 class EnsureAuthMiddleware extends GetMiddleware with MiddlewareLoggy {
   @override
   RouteSettings? redirect(String? route) {
-    loggy.info(route);
-
     if (!AuthService.to.isLoggedInValue) {
       final newRoute = AppRoute.login.path;
 
@@ -17,18 +15,28 @@ class EnsureAuthMiddleware extends GetMiddleware with MiddlewareLoggy {
     }
     return super.redirect(route);
   }
+
+  @override
+  Future<GetNavConfig?> redirectDelegate(GetNavConfig route) {
+    loggy.info(route);
+    return super.redirectDelegate(route);
+  }
 }
 
 class EnsureNotAuthedMiddleware extends GetMiddleware with MiddlewareLoggy {
   @override
   RouteSettings? redirect(String? route) {
-    loggy.info(route);
-
     if (AuthService.to.isLoggedInValue) {
       final newRoute = AppRoute.home.path;
 
       return RouteSettings(name: newRoute);
     }
     return super.redirect(route);
+  }
+
+  @override
+  Future<GetNavConfig?> redirectDelegate(GetNavConfig route) {
+    loggy.info(route);
+    return super.redirectDelegate(route);
   }
 }

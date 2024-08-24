@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_loggy_dio/flutter_loggy_dio.dart';
 
 import '../common/result.dart';
 import 'interceptors/bearer_interceptor.dart';
@@ -13,8 +12,8 @@ class ApiDio {
       ..contentType = Headers.jsonContentType;
 
     dio.interceptors
-      ..add(LoggyDioInterceptor())
-      ..add(BearerInterceptor());
+        // ..add(LoggyDioInterceptor())
+        .add(BearerInterceptor());
   }
 
   Future<Result<T>> get<T>(

@@ -17,7 +17,6 @@ class AppPages {
       participatesInRootNavigator: true,
       preventDuplicates: true,
       middlewares: [
-        //only enter this route when not authed
         EnsureAuthMiddleware(),
       ],
     ),
@@ -25,15 +24,12 @@ class AppPages {
       name: AppRoute.login.path,
       page: () => const LoginPage(),
       middlewares: [
-        //only enter this route when not authed
         EnsureNotAuthedMiddleware(),
       ],
     ),
     GetPage(
       name: AppRoute.detail.path,
-      page: () => const DetailPage(
-        params: DetailViewParams(id: 123),
-      ),
+      page: () => const DetailPage(),
       binding: DetailBinding(),
     ),
   ];

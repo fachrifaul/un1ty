@@ -4,7 +4,6 @@ import 'package:loggy/loggy.dart';
 
 import 'core/network/api.dart';
 import 'core/network/service/auth_service.dart';
-import 'core/network/service/http_bin_service.dart';
 import 'routes/router.dart';
 
 void main() {
@@ -37,6 +36,7 @@ class MyApp extends StatelessWidget with UiLoggy {
     return GetMaterialApp(
       initialBinding: AppBindings(),
       getPages: AppPages.routes,
+      unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -51,8 +51,27 @@ class AppBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(ApiDio());
-    Get.lazyPut(() => HttpBinService(Get.find()));
 
     Get.put(AuthService());
+  }
+}
+
+class UnknownRoutePage extends StatefulWidget {
+  const UnknownRoutePage({super.key});
+
+  @override
+  State<UnknownRoutePage> createState() => _UnknownRoutePageState();
+}
+
+class _UnknownRoutePageState extends State<UnknownRoutePage> {
+  @override
+  void initState() {
+    super.initState();
+    Get.back();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox();
   }
 }

@@ -4,33 +4,29 @@ import 'package:get/get.dart';
 import '../../core/common/async_value.dart';
 import '../../core/logger/loggy_types.dart';
 import '../../core/network/service/auth_service.dart';
-import 'detail_bindings.dart';
 import 'detail_controller.dart';
 
 class DetailPage extends GetWidget<DetailController> with UiLoggy {
-  final DetailViewParams params;
-
   const DetailPage({
     super.key,
-    required this.params,
   });
 
   @override
   Widget build(BuildContext context) {
     loggy.info('lalal');
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Detail ${params.id}'),
-        leading: IconButton(
-          onPressed: () => Get.back(),
-          icon: const Icon(
-            Icons.arrow_back,
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: Text('Detail ${controller.params.id}'),
+          leading: IconButton(
+            onPressed: () => Get.back(),
+            icon: const Icon(
+              Icons.arrow_back,
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Obx(
-          () => controller.response.value.when(
+        body: SafeArea(
+          child: controller.response.value.when(
             data: (value) {
               return Column(
                 children: [

@@ -1,8 +1,10 @@
+import 'package:get/get.dart';
+
 import '../../common/result.dart';
 import '../api.dart';
 import '../response/get_response.dart';
 
-class HttpBinService {
+class HttpBinService extends GetxService {
   final ApiDio dio;
 
   HttpBinService(this.dio);

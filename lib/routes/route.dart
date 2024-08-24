@@ -1,6 +1,6 @@
 enum AppRoute {
   home('/'),
-  detail('/detail'),
+  detail('/detail/:id'),
   login('/login'),
   ;
 

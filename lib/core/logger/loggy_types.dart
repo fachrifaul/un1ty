@@ -16,10 +16,9 @@ mixin ControllerLoggy implements LoggyType {
       Loggy<ControllerLoggy>('GetxController: $runtimeType');
 }
 
-mixin RepositoryLoggy implements LoggyType {
+mixin ServiceLoggy implements LoggyType {
   @override
-  Loggy<RepositoryLoggy> get loggy =>
-      Loggy<RepositoryLoggy>('REPOSITORY: $runtimeType');
+  Loggy<ServiceLoggy> get loggy => Loggy<ServiceLoggy>('SERVICE: $runtimeType');
 }
 
 mixin MiddlewareLoggy implements LoggyType {

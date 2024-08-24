@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/logger/loggy_types.dart';
 import '../../routes/route.dart';
 import '../detail/detail_bindings.dart';
 
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with UiLoggy {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -44,12 +45,17 @@ class _HomePageState extends State<HomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             ElevatedButton(
-              onPressed: () => Get.toNamed(
-                AppRoute.detail.name,
-                arguments: const DetailViewParams(
-                  id: 123,
-                ),
-              ),
+              onPressed: () {
+                final path =
+                    AppRoute.detail.path.replaceAll(':id', 123.toString());
+
+                Get.toNamed(
+                  path,
+                  arguments: const DetailViewParams(
+                    id: 123,
+                  ),
+                );
+              },
               child: const Text('Go to the Details screen'),
             ),
           ],
