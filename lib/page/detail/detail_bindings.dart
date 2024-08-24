@@ -9,16 +9,9 @@ class DetailBinding extends Bindings {
   dependencies() {
     Get.create(() => HttpBinService(Get.find()));
     Get.lazyPut<DetailController>(() {
-      final parameters = Get.parameters;
-      final input = DetailInput(
-        id: parameters.getInt('id') ?? 0,
-        flag: parameters.getBool('flag'),
-        country: parameters.getString('country') ?? '',
-      );
-
       return DetailController(
         params: DetailViewParams(
-          input: input,
+          input: DetailInput.fromMap(Get.parameters),
           service: Get.find(),
         ),
       );
@@ -37,6 +30,10 @@ class DetailViewParams {
 }
 
 class DetailInput {
+  static const idKey = 'id';
+  static const flagKey = 'flag';
+  static const countryKey = 'country';
+
   final int id;
   final bool flag;
   final String country;
@@ -46,4 +43,20 @@ class DetailInput {
     this.flag = false,
     this.country = '',
   });
+
+  factory DetailInput.fromMap(Map<String, String?> parameters) {
+    return DetailInput(
+      id: parameters.getInt('id') ?? 0,
+      flag: parameters.getBool('flag'),
+      country: parameters.getString('country') ?? '',
+    );
+  }
+
+  Map<String, String>? toMap() {
+    return {
+      idKey: id.toString(),
+      flagKey: flag.toString(),
+      countryKey: country.toString(),
+    };
+  }
 }
