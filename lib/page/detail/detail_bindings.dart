@@ -10,15 +10,15 @@ class DetailBinding extends Bindings {
     Get.create(() => HttpBinService(Get.find()));
     Get.lazyPut<DetailController>(() {
       final parameters = Get.parameters;
-      final arguments = Get.arguments as DetailViewParams?;
+      final arguments = Get.arguments as DetailInput?;
       final params = arguments ??
-          DetailViewParams(
+          DetailInput(
             id: int.tryParse(parameters['id'] ?? '0') ?? 0,
           );
 
       return DetailController(
-        input: DetailInput(
-          params: params,
+        params: DetailViewParams(
+          input: params,
           service: Get.find(),
         ),
       );
@@ -26,20 +26,20 @@ class DetailBinding extends Bindings {
   }
 }
 
-class DetailInput {
-  final DetailViewParams params;
+class DetailViewParams {
+  final DetailInput input;
   final HttpBinService service;
 
-  DetailInput({
-    required this.params,
+  DetailViewParams({
+    required this.input,
     required this.service,
   });
 }
 
-class DetailViewParams {
+class DetailInput {
   final int id;
 
-  const DetailViewParams({
+  const DetailInput({
     required this.id,
   });
 }

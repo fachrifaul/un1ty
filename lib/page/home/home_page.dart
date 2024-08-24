@@ -35,7 +35,7 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
 
                   Get.toNamed(
                     path,
-                    arguments: const DetailViewParams(
+                    arguments: const DetailInput(
                       id: 123,
                     ),
                   );

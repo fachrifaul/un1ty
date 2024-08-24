@@ -9,10 +9,10 @@ class DetailController extends GetxController with ControllerLoggy {
   Rx<AsyncValue<GetResponse>> response =
       const AsyncValue<GetResponse>.loading().obs;
 
-  final DetailInput input;
+  final DetailViewParams params;
 
   DetailController({
-    required this.input,
+    required this.params,
   });
 
   @override
@@ -22,7 +22,7 @@ class DetailController extends GetxController with ControllerLoggy {
   }
 
   void initialize() async {
-    final result = await input.service.get();
+    final result = await params.service.get();
 
     result.when(
       data: (value) {

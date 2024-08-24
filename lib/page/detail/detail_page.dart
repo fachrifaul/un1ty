@@ -18,7 +18,7 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
-          title: Text('Detail ${controller.input.params.id}'),
+          title: Text('Detail ${controller.params.input.id}'),
           leading: IconButton(
             onPressed: () => Get.back(),
             icon: const Icon(
