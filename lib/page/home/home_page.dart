@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../routes/route.dart';
 import '../../util/loggy_types.dart';
-import '../detail/detail_bindings.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetWidget<HomeController> with UiLoggy {
@@ -30,14 +29,20 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
               ),
               ElevatedButton(
                 onPressed: () {
-                  final path =
-                      AppRoute.detail.path.replaceAll(':id', 123.toString());
-
                   Get.toNamed(
-                    path,
-                    arguments: const DetailInput(
-                      id: 123,
-                    ),
+                    AppRoute.detail(id: 123),
+                  );
+                },
+                child: const Text('Go to the Details screen no Params'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(
+                    AppRoute.detail(id: 123),
+                    parameters: {
+                      "flag": "true",
+                      "country": "italy",
+                    },
                   );
                 },
                 child: const Text('Go to the Details screen'),

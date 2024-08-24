@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget with UiLoggy {
     return GetMaterialApp(
       initialBinding: AppBindings(),
       getPages: AppPages.routes,
-      unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()),
+      unknownRoute:
+          GetPage(name: '/notfound', page: () => const UnknownRoutePage()),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

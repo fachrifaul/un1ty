@@ -9,8 +9,7 @@ class EnsureAuthMiddleware extends GetMiddleware with MiddlewareLoggy {
   @override
   RouteSettings? redirect(String? route) {
     if (!AuthService.to.isLoggedInValue) {
-      final newRoute = AppRoute.login.path;
-
+      final newRoute = AppRoute.login;
       return RouteSettings(name: newRoute);
     }
     return super.redirect(route);
@@ -27,8 +26,7 @@ class EnsureNotAuthedMiddleware extends GetMiddleware with MiddlewareLoggy {
   @override
   RouteSettings? redirect(String? route) {
     if (AuthService.to.isLoggedInValue) {
-      final newRoute = AppRoute.home.path;
-
+      final newRoute = AppRoute.home;
       return RouteSettings(name: newRoute);
     }
     return super.redirect(route);

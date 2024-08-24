@@ -32,6 +32,9 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
               return Column(
                 children: [
                   Text('data ${value.toJson()}'),
+                  Text('data ${controller.params.input.id}'),
+                  Text('data ${controller.params.input.flag}'),
+                  Text('data ${controller.params.input.country}'),
                   ElevatedButton(
                     onPressed: () => _onTapLogout(),
                     child: const Text('Logout'),
@@ -49,6 +52,6 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
 
   void _onTapLogout() {
     AuthService.to.logout();
-    Get.offAllNamed(AppRoute.home.path);
+    Get.offAllNamed(AppRoute.home);
   }
 }

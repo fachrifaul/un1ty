@@ -10,11 +10,11 @@ import 'middleware/authentication_middleware.dart';
 import 'route.dart';
 
 class AppPages {
-  static final String initial = AppRoute.home.path;
+  static final String initial = AppRoute.home;
 
   static final routes = [
     GetPage(
-      name: AppRoute.home.path,
+      name: AppRoute.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
       preventDuplicates: true,
@@ -23,7 +23,7 @@ class AppPages {
       ],
     ),
     GetPage(
-      name: AppRoute.login.path,
+      name: AppRoute.login,
       preventDuplicates: true,
       page: () => const LoginPage(),
       binding: LoginBinding(),
@@ -32,7 +32,7 @@ class AppPages {
       ],
     ),
     GetPage(
-      name: AppRoute.detail.path,
+      name: AppRoute.detail(),
       page: () => const DetailPage(),
       binding: DetailBinding(),
       middlewares: [

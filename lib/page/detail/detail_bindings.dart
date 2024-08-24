@@ -1,5 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get.dart';
+import 'package:quickly/quickly.dart';
 
 import '../../network/service/http_bin_service.dart';
 import 'detail_controller.dart';
@@ -9,12 +9,12 @@ class DetailBinding extends Bindings {
   dependencies() {
     Get.create(() => HttpBinService(Get.find()));
     Get.lazyPut<DetailController>(() {
-      final arguments = Get.arguments as DetailInput?;
       final parameters = Get.parameters;
-      final input = arguments ??
-          DetailInput(
-            id: int.tryParse(parameters['id'] ?? '0') ?? 0,
-          );
+      final input = DetailInput(
+        id: parameters.getInt('id') ?? 0,
+        flag: parameters.getBool('flag'),
+        country: parameters.getString('country') ?? '',
+      );
 
       return DetailController(
         params: DetailViewParams(
@@ -38,8 +38,12 @@ class DetailViewParams {
 
 class DetailInput {
   final int id;
+  final bool flag;
+  final String country;
 
   const DetailInput({
     required this.id,
+    this.flag = false,
+    this.country = '',
   });
 }

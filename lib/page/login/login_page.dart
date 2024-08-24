@@ -32,6 +32,6 @@ class LoginPage extends GetWidget<LoginController> with UiLoggy {
 
   void _onTapLogin(BuildContext context) {
     AuthService.to.login();
-    Get.offNamed(AppRoute.home.name);
+    Get.offNamed(AppRoute.home);
   }
 }
