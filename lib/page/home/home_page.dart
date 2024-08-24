@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../routes/route.dart';
 import '../../util/loggy_types.dart';
-import '../detail/detail_bindings.dart';
+import '../detail/detail_route.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetWidget<HomeController> with UiLoggy {
@@ -31,22 +30,21 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
               ElevatedButton(
                 onPressed: () {
                   Get.toNamed(
-                    AppRoute.detail(id: 123),
+                    DetailRoute.path(id: 123),
                   );
                 },
                 child: const Text('Go to the Details screen no Params'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  final parameters = const DetailInput(
-                    id: 1234,
-                    flag: true,
-                    country: 'italy',
-                  ).toMap();
-
                   Get.toNamed(
-                    AppRoute.detail(id: 123),
-                    parameters: parameters,
+                    DetailRoute.path(id: 123),
+                    parameters: const DetailInput(
+                      id: 1234,
+                      flag: true,
+                      country: 'italy',
+                      weight: 987,
+                    ).toMap(),
                   );
                 },
                 child: const Text('Go to the Details screen'),

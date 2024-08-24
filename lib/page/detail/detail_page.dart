@@ -35,6 +35,7 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
                   Text('data ${controller.params.input.id}'),
                   Text('data ${controller.params.input.flag}'),
                   Text('data ${controller.params.input.country}'),
+                  Text('data ${controller.params.input.weight}'),
                   ElevatedButton(
                     onPressed: () => _onTapLogout(),
                     child: const Text('Logout'),

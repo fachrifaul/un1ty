@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../page/detail/detail_bindings.dart';
 import '../page/detail/detail_page.dart';
+import '../page/detail/detail_route.dart';
 import '../page/home/home_bindings.dart';
 import '../page/home/home_page.dart';
 import '../page/login/login_bindings.dart';
@@ -32,7 +33,7 @@ class AppPages {
       ],
     ),
     GetPage(
-      name: AppRoute.detail(),
+      name: DetailRoute.path(),
       page: () => const DetailPage(),
       binding: DetailBinding(),
       middlewares: [
