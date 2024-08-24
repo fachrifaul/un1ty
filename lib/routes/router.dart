@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 
-import '../middleware/authentication_middleware.dart';
 import '../page/auth/login_page.dart';
 import '../page/detail/detail_bindings.dart';
 import '../page/detail/detail_page.dart';
 import '../page/home/home_page.dart';
+import 'middleware/authentication_middleware.dart';
 import 'route.dart';
 
 class AppPages {
