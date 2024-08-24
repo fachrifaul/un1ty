@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/async_value.dart';
-import '../../logger/loggy_types.dart';
+import '../../core/common/async_value.dart';
+import '../../core/logger/loggy_types.dart';
 import 'detail_bloc.dart';
 
 class DetailViewParams {

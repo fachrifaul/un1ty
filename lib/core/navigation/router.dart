@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../page/auth/authentication_bloc.dart';
-import '../page/auth/login_page.dart';
-import '../page/detail/detail_page.dart';
-import '../page/home/home_page.dart';
+import '../../page/auth/authentication_bloc.dart';
+import '../../page/auth/login_page.dart';
+import '../../page/detail/detail_page.dart';
+import '../../page/home/home_page.dart';
 import 'route.dart';
 
 final GoRouter appRouter = GoRouter(

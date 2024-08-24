@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_loggy_dio/flutter_loggy_dio.dart';
 
-import '../core/result.dart';
+import '../common/result.dart';
 import 'interceptors/bearer_interceptor.dart';
 
 class ApiDio {

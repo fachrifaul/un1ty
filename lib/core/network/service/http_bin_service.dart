@@ -1,4 +1,4 @@
-import '../../core/result.dart';
+import '../../common/result.dart';
 import '../api.dart';
 import '../response/get_response.dart';
 

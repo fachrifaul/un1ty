@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../logger/loggy_types.dart';
+import '../../core/logger/loggy_types.dart';
 
 class AuthenticationState {
   final String userName;

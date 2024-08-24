@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../navigation/route.dart';
+import '../../core/navigation/route.dart';
 import 'authentication_bloc.dart';
 import 'login_bloc.dart';
 

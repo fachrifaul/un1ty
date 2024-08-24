@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/async_value.dart';
-import '../../logger/loggy_types.dart';
-import '../../network/response/get_response.dart';
-import '../../network/service/http_bin_service.dart';
+import '../../core/common/async_value.dart';
+import '../../core/logger/loggy_types.dart';
+import '../../core/network/response/get_response.dart';
+import '../../core/network/service/http_bin_service.dart';
 
 class DetailState {
   final AsyncValue<GetResponse> response;
