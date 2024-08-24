@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get.dart';
 
 import '../../network/service/http_bin_service.dart';
@@ -7,7 +8,7 @@ class DetailBinding extends Bindings {
   @override
   dependencies() {
     Get.create(() => HttpBinService(Get.find()));
-    Get.create<DetailController>(() {
+    Get.lazyPut<DetailController>(() {
       final parameters = Get.parameters;
       final arguments = Get.arguments as DetailViewParams?;
       final params = arguments ??
@@ -16,11 +17,23 @@ class DetailBinding extends Bindings {
           );
 
       return DetailController(
-        params: params,
-        service: Get.find(),
+        input: DetailInput(
+          params: params,
+          service: Get.find(),
+        ),
       );
     });
   }
+}
+
+class DetailInput {
+  final DetailViewParams params;
+  final HttpBinService service;
+
+  DetailInput({
+    required this.params,
+    required this.service,
+  });
 }
 
 class DetailViewParams {
