@@ -1,0 +1,8 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        options:
+          union_value_case: pascal
+          maybe_map: true
+          maybe_when: true
