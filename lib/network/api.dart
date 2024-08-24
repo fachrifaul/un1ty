@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../common/result.dart';
+import '../core/common/result.dart';
 import 'interceptors/bearer_interceptor.dart';
 
 class ApiDio {

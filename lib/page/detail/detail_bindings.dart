@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../core/network/service/http_bin_service.dart';
+import '../../network/service/http_bin_service.dart';
 import 'detail_controller.dart';
 
 class DetailBinding extends Bindings {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/network/service/auth_service.dart';
+import '../../network/service/auth_service.dart';
 import '../../routes/route.dart';
 
 class LoginPage extends StatelessWidget {

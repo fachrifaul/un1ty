@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../core/logger/loggy_types.dart';
-import '../core/network/service/auth_service.dart';
+import '../network/service/auth_service.dart';
 import '../routes/route.dart';
 
 class EnsureAuthMiddleware extends GetMiddleware with MiddlewareLoggy {

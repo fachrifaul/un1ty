@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../core/common/async_value.dart';
 import '../../core/logger/loggy_types.dart';
-import '../../core/network/service/auth_service.dart';
+import '../../network/service/auth_service.dart';
 import 'detail_controller.dart';
 
 class DetailPage extends GetWidget<DetailController> with UiLoggy {

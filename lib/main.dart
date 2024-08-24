@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
-import 'core/network/api.dart';
-import 'core/network/service/auth_service.dart';
+import 'network/api.dart';
+import 'network/service/auth_service.dart';
 import 'routes/router.dart';
 
 void main() {
