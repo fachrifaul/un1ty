@@ -9,16 +9,16 @@ class DetailBinding extends Bindings {
   dependencies() {
     Get.create(() => HttpBinService(Get.find()));
     Get.lazyPut<DetailController>(() {
-      final parameters = Get.parameters;
       final arguments = Get.arguments as DetailInput?;
-      final params = arguments ??
+      final parameters = Get.parameters;
+      final input = arguments ??
           DetailInput(
             id: int.tryParse(parameters['id'] ?? '0') ?? 0,
           );
 
       return DetailController(
         params: DetailViewParams(
-          input: params,
+          input: input,
           service: Get.find(),
         ),
       );
