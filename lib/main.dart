@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
+import 'core/network/api.dart';
 import 'core/network/service/auth_service.dart';
+import 'core/network/service/http_bin_service.dart';
 import 'routes/router.dart';
 
 void main() {
@@ -33,11 +35,7 @@ class MyApp extends StatelessWidget with UiLoggy {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialBinding: BindingsBuilder(
-        () {
-          Get.put(AuthService());
-        },
-      ),
+      initialBinding: AppBindings(),
       getPages: AppPages.routes,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -46,5 +44,14 @@ class MyApp extends StatelessWidget with UiLoggy {
       ),
       debugShowCheckedModeBanner: false,
     );
+  }
+}
+
+class AppBindings extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(ApiDio());
+    Get.lazyPut(() => HttpBinService(Get.find()));
+    Get.put(AuthService());
   }
 }

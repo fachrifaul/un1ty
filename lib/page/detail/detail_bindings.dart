@@ -8,6 +8,7 @@ class DetailBinding extends Bindings {
     Get.create<DetailController>(() {
       return DetailController(
         params: Get.arguments,
+        service: Get.find(),
       );
     });
   }

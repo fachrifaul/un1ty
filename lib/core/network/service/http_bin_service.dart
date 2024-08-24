@@ -3,7 +3,9 @@ import '../api.dart';
 import '../response/get_response.dart';
 
 class HttpBinService {
-  final ApiDio dio = ApiDio();
+  final ApiDio dio;
+
+  HttpBinService(this.dio);
 
   Future<Result<GetResponse>> get() async {
     return dio.get(

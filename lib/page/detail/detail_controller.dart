@@ -10,11 +10,12 @@ class DetailController extends GetxController with ControllerLoggy {
   Rx<AsyncValue<GetResponse>> response =
       const AsyncValue<GetResponse>.loading().obs;
 
-  final service = HttpBinService();
   final DetailViewParams params;
+  final HttpBinService service;
 
   DetailController({
     required this.params,
+    required this.service,
   });
 
   @override
