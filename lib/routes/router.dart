@@ -14,7 +14,6 @@ class AppPages {
     GetPage(
       name: AppRoute.home.path,
       page: () => const HomePage(),
-      participatesInRootNavigator: true,
       preventDuplicates: true,
       middlewares: [
         EnsureAuthMiddleware(),
@@ -22,6 +21,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoute.login.path,
+      preventDuplicates: true,
       page: () => const LoginPage(),
       middlewares: [
         EnsureNotAuthedMiddleware(),
@@ -31,6 +31,9 @@ class AppPages {
       name: AppRoute.detail.path,
       page: () => const DetailPage(),
       binding: DetailBinding(),
+      middlewares: [
+        EnsureAuthMiddleware(),
+      ],
     ),
   ];
 }

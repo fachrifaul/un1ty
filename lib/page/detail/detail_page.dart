@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../network/service/auth_service.dart';
+import '../../routes/route.dart';
 import '../../util/async_value.dart';
 import '../../util/loggy_types.dart';
 import 'detail_controller.dart';
@@ -32,7 +33,7 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
                 children: [
                   Text('data ${value.toJson()}'),
                   ElevatedButton(
-                    onPressed: () => AuthService.to.logout(),
+                    onPressed: () => _onTapLogout(),
                     child: const Text('Logout'),
                   ),
                 ],
@@ -44,5 +45,10 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
         ),
       ),
     );
+  }
+
+  void _onTapLogout() {
+    AuthService.to.logout();
+    Get.offAllNamed(AppRoute.home.path);
   }
 }
