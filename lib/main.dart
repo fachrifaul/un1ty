@@ -52,6 +52,7 @@ class AppBindings extends Bindings {
   void dependencies() {
     Get.put(ApiDio());
     Get.lazyPut(() => HttpBinService(Get.find()));
+
     Get.put(AuthService());
   }
 }
