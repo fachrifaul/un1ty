@@ -12,7 +12,10 @@ void main() {
   _initLoggy();
 
   runApp(
-    const MyApp(),
+    const RootRestorationScope(
+      restorationId: 'root',
+      child: MyApp(),
+    ),
   );
 }
 
@@ -34,7 +37,11 @@ class MyApp extends StatelessWidget with UiLoggy {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialBinding: AppBindings(),
+      // initialBinding: AppBindings(),
+      binds: [
+        Bind.put(ApiDio()),
+        Bind.put(AuthService()),
+      ],
       getPages: AppPages.routes,
       unknownRoute:
           GetPage(name: '/notfound', page: () => const UnknownRoutePage()),
@@ -48,14 +55,23 @@ class MyApp extends StatelessWidget with UiLoggy {
   }
 }
 
-class AppBindings extends Bindings {
-  @override
-  void dependencies() {
-    Get.put(ApiDio());
+// class AppBindings extends Bindings {
+//   @override
+//   void dependencies() {
+//     Get.put(ApiDio());
+//     Get.put(AuthService());
+//   }
+// }
 
-    Get.put(AuthService());
-  }
-}
+// class AppBinding extends Binding {
+//   @override
+//   List<Bind> dependencies() {
+//     return [
+//       Bind.put(ApiDio()),
+//       Bind.put(AuthService()),
+//     ];
+//   }
+// }
 
 class UnknownRoutePage extends StatefulWidget {
   const UnknownRoutePage({super.key});
