@@ -52,6 +52,38 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
             ],
           ),
         ),
+        // extendBody: true,
+        bottomNavigationBar: BottomNavigationBar(
+          // type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: 'Business',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'School',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: 'Business',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'School',
+            ),
+          ],
+          currentIndex: controller.selectedIndex.value,
+          selectedItemColor: Colors.amber[800],
+          unselectedItemColor: Colors.grey,
+          onTap: (index) {
+            controller.onItemTapped(index);
+          },
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: controller.increment,
           tooltip: 'Increment',

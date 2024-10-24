@@ -16,6 +16,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: AppRoute.home,
+      restorationId: AppRoute.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
       preventDuplicates: true,
@@ -25,6 +26,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoute.login,
+      restorationId: AppRoute.login,
       preventDuplicates: true,
       page: () => const LoginPage(),
       binding: LoginBinding(),
@@ -34,6 +36,7 @@ class AppPages {
     ),
     GetPage(
       name: DetailRoute.path(),
+      restorationId: DetailRoute.path(),
       page: () => const DetailPage(),
       binding: DetailBinding(),
       middlewares: [
