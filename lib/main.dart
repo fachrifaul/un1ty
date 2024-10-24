@@ -12,7 +12,11 @@ void main() {
   _initLoggy();
 
   runApp(
-    const MyApp(),
+    // const MyApp(),
+    const RootRestorationScope(
+      restorationId: 'root',
+      child: MyApp(),
+    ),
   );
 }
 

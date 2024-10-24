@@ -39,7 +39,7 @@ dependencies:
   get: ^4.6.6
   json_annotation: ^4.8.0
   loggy: ^2.0.3
-  package_info_plus: ^8.0.2
+  package_info_plus: ^8.1.0
   quickly: ^4.2.7
 
 dev_dependencies:
