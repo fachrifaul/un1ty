@@ -26,3 +26,8 @@ mixin MiddlewareLoggy implements LoggyType {
   Loggy<MiddlewareLoggy> get loggy =>
       Loggy<MiddlewareLoggy>('GetMiddleware: $runtimeType');
 }
+mixin BindingLoggy implements LoggyType {
+  @override
+  Loggy<BindingLoggy> get loggy =>
+      Loggy<BindingLoggy>('BindingLoggy: $runtimeType');
+}

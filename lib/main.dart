@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'network/api.dart';
 import 'network/service/auth_service.dart';
+import 'network/service/http_bin_service.dart';
 import 'routes/router.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await initServices();
   _initLoggy();
 
   runApp(
@@ -30,6 +33,10 @@ void _initLoggy() {
   );
 }
 
+Future<void> initServices() async {
+  Get.putAsync(() async => await SharedPreferences.getInstance());
+}
+
 class MyApp extends StatelessWidget with UiLoggy {
   const MyApp({
     super.key,
@@ -40,6 +47,8 @@ class MyApp extends StatelessWidget with UiLoggy {
     return GetMaterialApp(
       initialBinding: AppBindings(),
       getPages: AppPages.routes,
+      restorationScopeId: 'root',
+      initialRoute: AppPages.initial,
       unknownRoute:
           GetPage(name: '/notfound', page: () => const UnknownRoutePage()),
       title: 'Flutter Demo',
@@ -58,6 +67,7 @@ class AppBindings extends Bindings {
     Get.put(ApiDio());
 
     Get.put(AuthService());
+    Get.create(() => HttpBinService(Get.find()));
   }
 }
 

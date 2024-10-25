@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 
+import '../../util/loggy_types.dart';
 import 'home_controller.dart';
 
-class HomeBinding extends Bindings {
+class HomeBinding extends Bindings with BindingLoggy {
   @override
   dependencies() {
-    Get.create<HomeController>(() {
-      return HomeController();
-    });
+    loggy.info('dependencies');
+
+    Get.lazyPut(() => HomeController());
   }
 }

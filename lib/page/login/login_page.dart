@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../network/service/auth_service.dart';
-import '../../routes/route.dart';
 import '../../util/loggy_types.dart';
 import 'login_controller.dart';
+import 'login_route.dart';
 
 class LoginPage extends GetWidget<LoginController> with UiLoggy {
   const LoginPage({super.key});
@@ -32,6 +32,6 @@ class LoginPage extends GetWidget<LoginController> with UiLoggy {
 
   void _onTapLogin(BuildContext context) {
     AuthService.to.login();
-    Get.offNamed(AppRoute.home);
+    Get.back(result: LoginOutput());
   }
 }

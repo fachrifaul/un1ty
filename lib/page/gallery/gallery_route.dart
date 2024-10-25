@@ -1,11 +1,12 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../routes/restorable_page.dart';
 import '../../util/map_extention.dart';
 
-abstract class DetailRoute {
-  static String path({int? id}) => '/detail/${id ?? ':${DetailInput.idKey}'}';
+abstract class GalleryRoute {
+  static String path({int? id}) => '/gallery/${id ?? ':${GalleryInput.idKey}'}';
 }
 
-class DetailInput extends RouteInput {
+class GalleryInput extends RouteInput {
   static const idKey = 'id';
   static const flagKey = 'flag';
   static const countryKey = 'country';
@@ -16,15 +17,15 @@ class DetailInput extends RouteInput {
   final String country;
   final double weight;
 
-  DetailInput({
+  GalleryInput({
     required this.id,
     this.flag = false,
     this.country = '',
     this.weight = 0,
   });
 
-  factory DetailInput.fromMap(Map<String, dynamic> parameters) {
-    return DetailInput(
+  factory GalleryInput.fromMap(Map<String, dynamic> parameters) {
+    return GalleryInput(
       id: parameters.optInt(idKey),
       flag: parameters.optBool(flagKey),
       country: parameters.optString(countryKey),
@@ -32,7 +33,6 @@ class DetailInput extends RouteInput {
     );
   }
 
-  @override
   Map<String, String> toMap() {
     return {
       idKey: id.toString(),
@@ -43,10 +43,10 @@ class DetailInput extends RouteInput {
   }
 }
 
-class DetailOutput {
+class GalleryOutput {
   final String message;
 
-  const DetailOutput({
+  GalleryOutput({
     required this.message,
   });
 }

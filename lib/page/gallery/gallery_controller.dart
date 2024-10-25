@@ -4,17 +4,18 @@ import '../../network/response/get_response.dart';
 import '../../routes/restorable_page.dart';
 import '../../util/async_value.dart';
 import '../../util/loggy_types.dart';
-import 'detail_bindings.dart';
+import 'gallery_bindings.dart';
 
-class DetailController extends GetxController with ControllerLoggy {
+class GalleryController extends GetxController
+    with DisposableInterfaceRestoration, ControllerLoggy {
   Rx<AsyncValue<GetResponse>> response =
       const AsyncValue<GetResponse>.loading().obs;
 
-  final DetailViewParams params;
+  final GalleryViewParams params;
 
-  final List<RouteInfo> routes = [];
+  Map<String, RouteInfo<dynamic, Object>> routes = {};
 
-  DetailController({
+  GalleryController({
     required this.params,
   });
 
@@ -37,5 +38,20 @@ class DetailController extends GetxController with ControllerLoggy {
         response.value = AsyncValue.error(error, stackTrace);
       },
     );
+  }
+
+  @override
+  void restoreState(Object? state) {
+    // Implement restoration logic here if necessary
+    // For example, restoring the response or any other relevant state
+    if (state is AsyncValue<GetResponse>) {
+      response.value = state; // Restore the previous state
+    }
+  }
+
+  @override
+  Object? saveState() {
+    // Save the current response state for restoration
+    return response.value; // This allows restoring the response state
   }
 }

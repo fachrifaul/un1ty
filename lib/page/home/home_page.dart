@@ -3,10 +3,16 @@ import 'package:get/get.dart';
 
 import '../../util/loggy_types.dart';
 import '../detail/detail_route.dart';
+import '../gallery/gallery_route.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetWidget<HomeController> with UiLoggy {
-  const HomePage({super.key});
+  final Map<String, RestorableRouteFuture<dynamic>> routes;
+
+  const HomePage({
+    super.key,
+    required this.routes,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,30 +35,74 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Get.toNamed(
+                  Get.restorableToNamed(
                     DetailRoute.path(id: 123),
                   );
                 },
                 child: const Text('Go to the Details screen no Params'),
               ),
               ElevatedButton(
-                onPressed: () async {
-                  final result = await Get.toNamed(
-                    DetailRoute.path(id: 123),
-                    parameters: const DetailInput(
+                onPressed: () {
+                  controller.pushDetail(
+                    DetailRoute.path(),
+                    DetailInput(
                       id: 1234,
                       flag: true,
                       country: 'italy',
                       weight: 987,
-                    ).toMap(),
+                    ),
                   );
-                  controller.setResult(result);
                 },
-                child: const Text('Go to the Details screen'),
+                child: const Text('Go to the Details screen - routes'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  final parameters = DetailInput(
+                    id: 1234,
+                    flag: true,
+                    country: 'italy',
+                    weight: 987,
+                  ).toMap();
+                  Get.restorableToNamed(
+                    DetailRoute.path(id: 123),
+                    parameters: parameters,
+                  );
+                },
+                child:
+                    const Text('Go to the Details screen - restorableToNamed'),
               ),
               Text(
                 '${controller.result}',
                 style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  final parameters = DetailInput(
+                    id: 1234,
+                    flag: true,
+                    country: 'italy',
+                    weight: 987,
+                  ).toMap();
+
+                  routes[GalleryRoute.path()]?.present(parameters);
+                },
+                child: const Text('Go to the gallery via - route'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  final parameters = DetailInput(
+                    id: 1234,
+                    flag: true,
+                    country: 'italy',
+                    weight: 987,
+                  ).toMap();
+
+                  Get.restorableToNamed(
+                    GalleryRoute.path(id: 123),
+                    parameters: parameters,
+                  );
+                },
+                child: const Text('Go to the gallery via - restorableToNamed'),
               ),
             ],
           ),

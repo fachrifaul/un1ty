@@ -5,11 +5,11 @@ import '../../network/service/auth_service.dart';
 import '../../routes/route.dart';
 import '../../util/async_value.dart';
 import '../../util/loggy_types.dart';
-import 'detail_controller.dart';
-import 'detail_route.dart';
+import 'gallery_controller.dart';
+import 'gallery_route.dart';
 
-class DetailPage extends GetWidget<DetailController> with UiLoggy {
-  const DetailPage({
+class GalleryPage extends GetWidget<GalleryController> with UiLoggy {
+  const GalleryPage({
     super.key,
   });
 
@@ -19,7 +19,7 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
-          title: Text('Detail ${controller.params.input.id}'),
+          title: Text('Gallery ${controller.params.input.id}'),
           leading: IconButton(
             onPressed: () => Get.back(),
             icon: const Icon(
@@ -57,7 +57,7 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
   }
 
   void _onTapPopParams() {
-    Get.back(result: const DetailOutput(message: "output from detail page"));
+    Get.back(result: GalleryOutput(message: "output from detail page"));
   }
 
   void _onTapLogout() {
