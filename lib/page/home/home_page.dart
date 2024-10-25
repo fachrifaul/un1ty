@@ -36,8 +36,8 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
                 child: const Text('Go to the Details screen no Params'),
               ),
               ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(
+                onPressed: () async {
+                  final result = await Get.toNamed(
                     DetailRoute.path(id: 123),
                     parameters: const DetailInput(
                       id: 1234,
@@ -46,8 +46,16 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
                       weight: 987,
                     ).toMap(),
                   );
+                  loggy.info('DATA: $result');
+                  controller.setResultArgs(result);
+
+                  // controller.routeToDetail();
                 },
                 child: const Text('Go to the Details screen'),
+              ),
+              Text(
+                '${controller.resultArgs}',
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ],
           ),
