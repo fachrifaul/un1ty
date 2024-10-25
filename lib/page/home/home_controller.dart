@@ -26,14 +26,14 @@ class HomeController extends GetxController
       LoginRoute.login: LoginRouteInfo(LoginRoute.login),
       DetailRoute.path(): DetailRouteInfo(
         DetailRoute.path(),
-        callback: (output) {
+        result: (output) {
           loggy.info(output.message);
           result.value = output.message;
         },
       ),
       GalleryRoute.path(): GalleryRouteInfo(
         GalleryRoute.path(),
-        callback: (output) {
+        result: (output) {
           loggy.info(output.message);
           resultGallery.value = output.message;
         },

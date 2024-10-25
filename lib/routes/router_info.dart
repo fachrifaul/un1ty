@@ -4,7 +4,7 @@ import '../util/loggy_types.dart';
 
 class RouteInfo<I extends RouteInput, O extends Object> with UiLoggy {
   final String path;
-  final RouteCompletionCallback<O>? callback;
+  final RouteCompletionCallback<O>? result;
 
   late final RestorableRouteFuture routeFuture;
 
@@ -12,7 +12,7 @@ class RouteInfo<I extends RouteInput, O extends Object> with UiLoggy {
 
   RouteInfo(
     this.path, {
-    this.callback,
+    this.result,
   }) {
     routeFuture = createRestorableRouteFuture();
   }
@@ -29,11 +29,11 @@ class RouteInfo<I extends RouteInput, O extends Object> with UiLoggy {
           arguments: input.toMap(),
         );
       },
-      onComplete: (result) {
+      onComplete: (output) {
         loggy.info('Route [$path] completed with result: $result');
-        if (result != null) {
-          if (result is O) {
-            callback?.call(result);
+        if (output != null) {
+          if (output is O) {
+            result?.call(output);
           } else {
             loggy.warning(
               'Route [$path] completed with unexpected result type: ${result.runtimeType}',

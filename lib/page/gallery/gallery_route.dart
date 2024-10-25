@@ -34,6 +34,7 @@ class GalleryInput extends RouteInput {
     );
   }
 
+  @override
   Map<String, String> toMap() {
     return {
       idKey: id.toString(),

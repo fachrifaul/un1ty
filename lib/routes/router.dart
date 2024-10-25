@@ -29,9 +29,6 @@ class AppPages {
       ),
       binding: HomeBinding(),
       preventDuplicates: false,
-      middlewares: [
-        // EnsureAuthMiddleware(),
-      ],
     ),
     GetPage(
       name: LoginRoute.login,
@@ -39,37 +36,24 @@ class AppPages {
       preventDuplicates: false,
       page: () => const LoginPage(),
       binding: LoginBinding(),
-      middlewares: [
-        // EnsureNotAuthedMiddleware(),
-      ],
     ),
     GetPage(
       name: DetailRoute.path(),
       restorationId: DetailRoute.path(),
       // page: () => const DetailPage(),
       page: () => RestorablePage(
-        child: (route) => DetailPage(),
+        child: (route) => const DetailPage(),
       ),
       binding: DetailBinding(),
-      middlewares: [
-        // EnsureAuthMiddleware(),
-      ],
     ),
     GetPage(
       name: GalleryRoute.path(),
       restorationId: GalleryRoute.path(),
-      // page: () => const GalleryPage(),
       page: () => RestorablePage(
         routes: Get.find<GalleryController>().routes,
         child: (routes) => const GalleryPage(),
       ),
-      // page: () => RestorableGetxApp(
-      //   child: (route) => GalleryPage(),
-      // ),
       binding: GalleryBinding(),
-      middlewares: [
-        // EnsureAuthMiddleware(),
-      ],
     ),
   ];
 }
