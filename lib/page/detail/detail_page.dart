@@ -37,6 +37,10 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
                   Text('data ${controller.params.input.country}'),
                   Text('data ${controller.params.input.weight}'),
                   ElevatedButton(
+                    onPressed: () => _onTapPopParams(),
+                    child: const Text('Pop params'),
+                  ),
+                  ElevatedButton(
                     onPressed: () => _onTapLogout(),
                     child: const Text('Logout'),
                   ),
@@ -49,6 +53,10 @@ class DetailPage extends GetWidget<DetailController> with UiLoggy {
         ),
       ),
     );
+  }
+
+  void _onTapPopParams() {
+    Get.back(result: "output from detail page");
   }
 
   void _onTapLogout() {
