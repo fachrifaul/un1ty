@@ -1,4 +1,6 @@
-import '../../routes/restorable_page.dart';
+import '../../routes/router_info.dart';
+
+typedef LoginRouteInfo = RouteInfo<LoginInput, LoginOutput>;
 
 abstract class LoginRoute {
   static String get login => '/login';

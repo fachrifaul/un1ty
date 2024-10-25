@@ -44,7 +44,7 @@ class HomePage extends GetWidget<HomeController> with UiLoggy {
               ElevatedButton(
                 onPressed: () {
                   controller.pushDetail(
-                    DetailRoute.path(),
+                    DetailRoute.path(id: 123),
                     DetailInput(
                       id: 1234,
                       flag: true,

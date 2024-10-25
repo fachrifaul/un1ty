@@ -1,9 +1,11 @@
-import '../../routes/restorable_page.dart';
+import '../../routes/router_info.dart';
 import '../../util/map_extention.dart';
 
 abstract class DetailRoute {
   static String path({int? id}) => '/detail/${id ?? ':${DetailInput.idKey}'}';
 }
+
+typedef DetailRouteInfo = RouteInfo<DetailInput, DetailOutput>;
 
 class DetailInput extends RouteInput {
   static const idKey = 'id';

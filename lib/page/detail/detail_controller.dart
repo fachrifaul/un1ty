@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../network/response/get_response.dart';
-import '../../routes/restorable_page.dart';
+import '../../routes/router_info.dart';
 import '../../util/async_value.dart';
 import '../../util/loggy_types.dart';
 import 'detail_bindings.dart';

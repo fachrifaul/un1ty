@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../network/service/auth_service.dart';
-import '../../routes/restorable_page.dart';
+import '../../routes/router_info.dart';
 import '../../util/loggy_types.dart';
 import '../detail/detail_route.dart';
 import '../gallery/gallery_route.dart';
@@ -9,7 +9,8 @@ import '../login/login_route.dart';
 
 mixin GetXRestorationMixin on GetxController {
   void initRoute<I extends RouteInput, O extends Object>(
-      RouteInfo<I, O> route) {}
+    RouteInfo<I, O> route,
+  ) {}
 }
 
 class HomeController extends GetxController
@@ -22,31 +23,19 @@ class HomeController extends GetxController
 
   Map<String, RouteInfo<dynamic, Object>> _initRoutes() {
     return {
-      LoginRoute.login: RouteInfo<LoginInput, LoginOutput>(
-        path: LoginRoute.login,
-        callback: (output) {},
-      ),
-      DetailRoute.path(): RouteInfo<DetailInput, DetailOutput>(
-        path: DetailRoute.path(),
+      LoginRoute.login: LoginRouteInfo(LoginRoute.login),
+      DetailRoute.path(): DetailRouteInfo(
+        DetailRoute.path(),
         callback: (output) {
-          // Handle DetailOutput here
-          if (output is DetailOutput) {
-            loggy.info(output.message);
-            result.value = output.message;
-            // result.value = 'output.message';
-          }
+          loggy.info(output.message);
+          result.value = output.message;
         },
       ),
-      GalleryRoute.path(): RouteInfo<GalleryInput, GalleryOutput>(
-        path: GalleryRoute.path(),
+      GalleryRoute.path(): GalleryRouteInfo(
+        GalleryRoute.path(),
         callback: (output) {
-          // Handle GalleryOutput here
-
-          if (output is GalleryOutput) {
-            loggy.info(output.message);
-            resultGallery.value = output.message;
-            // result.value = 'output.message';
-          }
+          loggy.info(output.message);
+          resultGallery.value = output.message;
         },
       ),
     };
@@ -81,7 +70,7 @@ class HomeController extends GetxController
   }
 
   void pushDetail(String path, DetailInput input) {
-    final route = routes[path];
-    route?.routeFuture.present(input);
+    final route = routes[DetailRoute.path()];
+    route?.push(path, input);
   }
 }

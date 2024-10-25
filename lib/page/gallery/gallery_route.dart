@@ -1,10 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import '../../routes/restorable_page.dart';
+import '../../routes/router_info.dart';
 import '../../util/map_extention.dart';
 
 abstract class GalleryRoute {
   static String path({int? id}) => '/gallery/${id ?? ':${GalleryInput.idKey}'}';
 }
+
+typedef GalleryRouteInfo = RouteInfo<GalleryInput, GalleryOutput>;
 
 class GalleryInput extends RouteInput {
   static const idKey = 'id';
